@@ -1,6 +1,6 @@
 import CenterSection from "@/components/CenterSection";
 import LeftMenu from "@/components/leftMenu/LeftMenu";
-import RightMenu from "@/components/RightMenu";
+import RightMenu from "@/components/rightMenu/RightMenu";
 
 const Homepage = () => {
   return (

@@ -1,18 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import FriendRequests from "./FriendRequests";
-import Ad from "./Ad";
+import Ad from "../Ad";
 import BirthDays from "./BirthDays";
 import UserinfoCard from "./UserinfoCard";
 import UserMediaCard from "./UserMediaCard";
+import { User } from "@prisma/client";
 
-const RightMenu = ({ userId }: { userId?: string }) => {
+const RightMenu = ({ user }: { user?: User }) => {
   return (
     <aside className="hidden lg:block w-[30%]">
       <div className="flex flex-col gap-6">
-        {userId ? (
+        {user ? (
           <>
-            <UserinfoCard userId={userId} />
-            <UserMediaCard userId={userId} />
+            <Suspense fallback={"Loading..."}>
+              <UserinfoCard user={user} />
+            </Suspense>
+            <Suspense fallback={"Loading..."}>
+              <UserMediaCard user={user} />
+            </Suspense>
           </>
         ) : null}
         <FriendRequests />
